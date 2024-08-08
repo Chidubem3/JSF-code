@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Welcome</title>
+    </h:head>
+    <h:body>
+        <h:panelGroup rendered="#{userBean.isAuthenticated}">
+            
+            <!--rendered="#{userBean.isAuthenticated} is an attribute in JSF component is used to conditionally render the component based on the value of the isAuthenticated from the userBean(ManagedBeanClass)--> 
+            
+            <h1>Welcome, #{userBean.fullName}👻🤗</h1>
+            <h:form>
+                <h:commandButton value="Sign Out" action="#{userBean.signOut}"/>    
+            </h:form>
+        </h:panelGroup>
+        
+        <h:panelGroup rendered="#{! userBean.isAuthenticated}">
+            <h:form>
+                <h:outputText value="You are not logged in... Please sign in."/>
+                <h:commandButton value="Sign In" action="sign.xhtml"/>
+            </h:form>
+        </h:panelGroup>
+        
+        <br></br>
+        <i>@Dubem's Code</i>
+    </h:body>
+</html>
